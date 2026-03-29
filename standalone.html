@@ -72,9 +72,14 @@
                 <button onclick="scrollToId('how-it-works')" class="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Cara Kerja</button>
                 <button onclick="scrollToId('pricing')" class="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Harga</button>
                 <button onclick="scrollToId('faq')" class="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">FAQ</button>
-                <button onclick="handleBuyNow()" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.1em] transition-all shadow-lg shadow-blue-500/20 active:scale-95">
-                    Dapatkan Lisensi
-                </button>
+                <div class="flex items-center gap-3">
+                    <button onclick="handleTryDemo()" class="text-white border border-white/10 hover:bg-white/5 px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.1em] transition-all">
+                        Coba Demo
+                    </button>
+                    <button onclick="handleCheckout()" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.1em] transition-all shadow-lg shadow-blue-500/20 active:scale-95">
+                        Checkout Sekarang
+                    </button>
+                </div>
             </div>
 
             <button class="md:hidden text-white" onclick="toggleMenu()">
@@ -89,8 +94,8 @@
             <button onclick="scrollToId('how-it-works')" class="text-sm font-black uppercase text-left">Cara Kerja</button>
             <button onclick="scrollToId('pricing')" class="text-sm font-black uppercase text-left">Harga</button>
             <button onclick="scrollToId('faq')" class="text-sm font-black uppercase text-left">FAQ</button>
-            <button onclick="handleBuyNow()" class="bg-blue-600 text-white py-4 rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-2">
-                <i data-lucide="message-circle" size="20"></i> Hubungi Admin
+            <button onclick="handleConsultation()" class="bg-blue-600 text-white py-4 rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-2">
+                <i data-lucide="message-circle" size="20"></i> Konsultasi Admin
             </button>
         </div>
     </nav>
@@ -111,11 +116,11 @@
                 Berhenti bertanya-tanya ke mana perginya uang Anda. FinTrack membantu Anda mencatat setiap rupiah dengan presisi tinggi dan dashboard yang memanjakan mata.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-                <button onclick="scrollToId('pricing')" class="group w-full sm:w-auto bg-white text-black px-12 py-6 rounded-full font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-blue-50 transition-all shadow-[0_20px_40px_rgba(255,255,255,0.1)] active:scale-95">
-                    Beli Lisensi <i data-lucide="arrow-right" size="20" class="group-hover:translate-x-1 transition-transform"></i>
+                <button onclick="handleCheckout()" class="group w-full sm:w-auto bg-white text-black px-12 py-6 rounded-full font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-blue-50 transition-all shadow-[0_20px_40px_rgba(255,255,255,0.1)] active:scale-95">
+                    Checkout Sekarang <i data-lucide="arrow-right" size="20" class="group-hover:translate-x-1 transition-transform"></i>
                 </button>
-                <button onclick="scrollToId('features')" class="w-full sm:w-auto bg-[#1a1b23] border border-white/5 px-12 py-6 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-white/10 transition-all">
-                    Pelajari Fitur
+                <button onclick="handleTryDemo()" class="w-full sm:w-auto bg-[#1a1b23] border border-white/5 px-12 py-6 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="smartphone" size="18"></i> Coba Akun Demo (3 Hari)
                 </button>
             </div>
         </div>
@@ -221,15 +226,15 @@
                 <ul class="space-y-4">
                     <li class="flex items-start gap-3">
                         <i data-lucide="check-circle-2" size="24" class="text-blue-500 shrink-0"></i>
+                        <span class="font-bold text-gray-200">Filter Cerdas: Harian, Mingguan, Bulanan, Tahunan</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" size="24" class="text-blue-500 shrink-0"></i>
+                        <span class="font-bold text-gray-200">Rekomendasi Budget Harian Otomatis dari Pendapatan</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" size="24" class="text-blue-500 shrink-0"></i>
                         <span class="font-bold text-gray-200">Manajemen Multi-Dompet Terintegrasi</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="check-circle-2" size="24" class="text-blue-500 shrink-0"></i>
-                        <span class="font-bold text-gray-200">Kategori Transaksi yang Bisa Dikustomisasi</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="check-circle-2" size="24" class="text-blue-500 shrink-0"></i>
-                        <span class="font-bold text-gray-200">History Lengkap dengan Catatan Detail</span>
                     </li>
                 </ul>
             </div>
@@ -248,18 +253,18 @@
                 <!-- Feature 1 -->
                 <div class="bg-[#1a1b23] p-12 rounded-[3.5rem] border border-white/5 hover:border-blue-500/30 transition-all duration-500 group">
                     <div class="mb-8 p-4 bg-white/5 rounded-[1.5rem] inline-block group-hover:scale-110 group-hover:bg-blue-600/10 transition-all">
-                        <i data-lucide="bar-chart-3" class="text-blue-400" size="40"></i>
+                        <i data-lucide="zap" class="text-yellow-400" size="40"></i>
                     </div>
-                    <h3 class="text-2xl font-black mb-5 tracking-tight">Analitik Mendalam</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed font-medium">Grafik pie dan bar otomatis yang memisahkan pengeluaran konsumtif dan produktif Anda.</p>
+                    <h3 class="text-2xl font-black mb-5 tracking-tight">Smart Recommendation</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed font-medium">Sistem menghitung otomatis berapa maksimal pengeluaran harian Anda agar tetap hemat berdasarkan pendapatan.</p>
                 </div>
                 <!-- Feature 2 -->
                 <div class="bg-[#1a1b23] p-12 rounded-[3.5rem] border border-white/5 hover:border-blue-500/30 transition-all duration-500 group">
                     <div class="mb-8 p-4 bg-white/5 rounded-[1.5rem] inline-block group-hover:scale-110 group-hover:bg-blue-600/10 transition-all">
-                        <i data-lucide="download" class="text-emerald-400" size="40"></i>
+                        <i data-lucide="bar-chart-3" class="text-blue-400" size="40"></i>
                     </div>
-                    <h3 class="text-2xl font-black mb-5 tracking-tight">Laporan Ekspor CSV</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed font-medium">Ekspor semua data ke format Excel hanya dalam hitungan detik untuk audit mandiri.</p>
+                    <h3 class="text-2xl font-black mb-5 tracking-tight">Filter Multi-Dimensi</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed font-medium">Lihat laporan keuangan secara Harian, Mingguan, Bulanan, hingga Tahunan hanya dengan satu klik.</p>
                 </div>
                 <!-- Feature 3 -->
                 <div class="bg-[#1a1b23] p-12 rounded-[3.5rem] border border-white/5 hover:border-blue-500/30 transition-all duration-500 group">
@@ -284,18 +289,18 @@
             <div class="grid md:grid-cols-3 gap-12 relative">
                 <div class="relative z-10 text-center space-y-4">
                     <div class="w-16 h-16 bg-blue-600 rounded-2xl mx-auto flex items-center justify-center text-xl font-black shadow-2xl shadow-blue-500/40">01</div>
-                    <h4 class="text-xl font-black tracking-tight">Checkout WA</h4>
-                    <p class="text-gray-500 text-xs font-medium leading-relaxed">Klik tombol beli dan konfirmasi pembayaran ke admin CloudPrime.</p>
+                    <h4 class="text-xl font-black tracking-tight">Checkout</h4>
+                    <p class="text-gray-500 text-xs font-medium leading-relaxed">Pilih paket lisensi dan lakukan pembayaran melalui sistem checkout kami.</p>
                 </div>
                 <div class="relative z-10 text-center space-y-4">
                     <div class="w-16 h-16 bg-blue-600 rounded-2xl mx-auto flex items-center justify-center text-xl font-black shadow-2xl shadow-blue-500/40">02</div>
-                    <h4 class="text-xl font-black tracking-tight">Kirim File</h4>
-                    <p class="text-gray-500 text-xs font-medium leading-relaxed">Source code & panduan instalasi lengkap dikirimkan dalam 5 menit.</p>
+                    <h4 class="text-xl font-black tracking-tight">Konfirmasi</h4>
+                    <p class="text-gray-500 text-xs font-medium leading-relaxed">Pembayaran Anda akan dikonfirmasi secara otomatis oleh sistem dalam hitungan detik.</p>
                 </div>
                 <div class="relative z-10 text-center space-y-4">
                     <div class="w-16 h-16 bg-blue-600 rounded-2xl mx-auto flex items-center justify-center text-xl font-black shadow-2xl shadow-blue-500/40">03</div>
-                    <h4 class="text-xl font-black tracking-tight">Live & Online</h4>
-                    <p class="text-gray-500 text-xs font-medium leading-relaxed">Ikuti panduan setup sederhana dan aplikasi Anda online selamanya.</p>
+                    <h4 class="text-xl font-black tracking-tight">Akses Dashboard</h4>
+                    <p class="text-gray-500 text-xs font-medium leading-relaxed">Akun Anda aktif seketika. Mulai kelola finansial Anda langsung dari website.</p>
                 </div>
             </div>
         </div>
@@ -315,9 +320,9 @@
                         ⭐ Promo Terbatas Bulan Ini
                     </div>
                     <div class="flex flex-col items-center gap-2 mb-10">
-                        <span class="text-gray-500 line-through font-bold">Rp 499.000</span>
+                        <span class="text-gray-500 line-through font-bold">Rp 99.000</span>
                         <div class="flex items-baseline gap-2">
-                            <span class="text-7xl font-black italic tracking-tighter text-white">Rp 99rb</span>
+                            <span class="text-7xl font-black italic tracking-tighter text-white">Rp 35.000</span>
                         </div>
                         <p class="text-gray-500 text-sm font-medium mt-2">Lisensi Seumur Hidup (Lifetime)</p>
                     </div>
@@ -327,31 +332,36 @@
                             <div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
                                 <i data-lucide="check-circle-2" size="14" class="text-emerald-500"></i>
                             </div>
-                            <span class="text-xs font-bold text-gray-300 tracking-wide uppercase">Full Source Code (React JS)</span>
+                            <span class="text-xs font-bold text-gray-300 tracking-wide uppercase">Akses Dashboard Full Fitur</span>
                         </div>
                         <div class="flex items-center gap-4">
                             <div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
                                 <i data-lucide="check-circle-2" size="14" class="text-emerald-500"></i>
                             </div>
-                            <span class="text-xs font-bold text-gray-300 tracking-wide uppercase">Panduan Deployment Vercel</span>
+                            <span class="text-xs font-bold text-gray-300 tracking-wide uppercase">Fitur Smart Recommendation Budget</span>
                         </div>
                         <div class="flex items-center gap-4">
                             <div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
                                 <i data-lucide="check-circle-2" size="14" class="text-emerald-500"></i>
                             </div>
-                            <span class="text-xs font-bold text-gray-300 tracking-wide uppercase">Konfigurasi Firebase Database</span>
+                            <span class="text-xs font-bold text-gray-300 tracking-wide uppercase">Filter Harian/Mingguan/Bulanan/Tahunan</span>
                         </div>
                         <div class="flex items-center gap-4">
                             <div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
                                 <i data-lucide="check-circle-2" size="14" class="text-emerald-500"></i>
                             </div>
-                            <span class="text-xs font-bold text-gray-300 tracking-wide uppercase">Support Tanya Jawab CloudPrime</span>
+                            <span class="text-xs font-bold text-gray-300 tracking-wide uppercase">Support Konsultasi CloudPrime</span>
                         </div>
                     </div>
 
-                    <button onclick="handleBuyNow()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-[0.2em] py-7 rounded-[2.5rem] shadow-[0_15px_40px_rgba(37,99,235,0.4)] transition-all active:scale-95 flex items-center justify-center gap-3 text-sm">
-                        <i data-lucide="message-circle" size="22"></i> Amankan Lisensi Saya
-                    </button>
+                    <div class="flex flex-col gap-4">
+                        <button onclick="handleCheckout()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-[0.2em] py-7 rounded-[2.5rem] shadow-[0_15px_40px_rgba(37,99,235,0.4)] transition-all active:scale-95 flex items-center justify-center gap-3 text-sm">
+                            <i data-lucide="shopping-cart" size="22"></i> Checkout Sekarang
+                        </button>
+                        <button onclick="handleConsultation()" class="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 font-black uppercase tracking-[0.2em] py-5 rounded-[2.5rem] transition-all active:scale-95 flex items-center justify-center gap-3 text-xs">
+                            <i data-lucide="message-circle" size="18"></i> Konsultasi via WhatsApp
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -373,7 +383,7 @@
                         <i data-lucide="chevron-down" size="20" class="text-blue-500 transition-transform duration-300"></i>
                     </button>
                     <div class="faq-answer-hidden px-8 pb-8">
-                        <p class="text-gray-500 text-sm leading-relaxed font-medium border-t border-white/5 pt-6">Tidak. Ini adalah model sekali bayar. Setelah Anda memiliki source codenya, Anda bisa menggunakannya selamanya tanpa biaya tambahan atau langganan apapun.</p>
+                        <p class="text-gray-500 text-sm leading-relaxed font-medium border-t border-white/5 pt-6">Tidak. Ini adalah model sekali bayar. Setelah Anda memiliki lisensinya, Anda bisa menggunakannya selamanya tanpa biaya tambahan atau langganan apapun.</p>
                     </div>
                 </div>
                 <!-- FAQ 2 -->
@@ -383,7 +393,7 @@
                         <i data-lucide="chevron-down" size="20" class="text-blue-500 transition-transform duration-300"></i>
                     </button>
                     <div class="faq-answer-hidden px-8 pb-8">
-                        <p class="text-gray-500 text-sm leading-relaxed font-medium border-t border-white/5 pt-6">Jangan khawatir. Paket penjualan sudah termasuk panduan PDF dan video singkat yang menjelaskan cara online-kan aplikasi hanya dengan beberapa klik. Admin CloudPrime juga siap membantu jika Anda bingung.</p>
+                        <p class="text-gray-500 text-sm leading-relaxed font-medium border-t border-white/5 pt-6">Jangan khawatir. FinTrack didesain dengan antarmuka yang sangat intuitif. Anda tidak perlu melakukan instalasi rumit karena ini adalah aplikasi berbasis web. Cukup login dan Anda siap mengelola keuangan. Admin CloudPrime juga siap membantu jika Anda memiliki pertanyaan.</p>
                     </div>
                 </div>
                 <!-- FAQ 3 -->
@@ -403,7 +413,7 @@
                         <i data-lucide="chevron-down" size="20" class="text-blue-500 transition-transform duration-300"></i>
                     </button>
                     <div class="faq-answer-hidden px-8 pb-8">
-                        <p class="text-gray-500 text-sm leading-relaxed font-medium border-t border-white/5 pt-6">Tentu saja! Karena Anda mendapatkan full source code (React JS), Anda bebas memodifikasi warna, logo, atau fitur sesuai keinginan Anda atau brand Anda.</p>
+                        <p class="text-gray-500 text-sm leading-relaxed font-medium border-t border-white/5 pt-6">Tentu saja! Anda dapat menyesuaikan profil, kategori pengeluaran, dan target budget Anda sendiri melalui menu pengaturan di dalam dashboard.</p>
                     </div>
                 </div>
             </div>
@@ -435,11 +445,22 @@
         // Constants
         const WHATSAPP_NUMBER = "628993358221";
         const PRODUCT_NAME = "FinTrack Lifetime License";
+        const DEMO_URL = "https://appfintracker.netlify.app/";
 
-        // WhatsApp Handler
-        function handleBuyNow() {
-            const message = encodeURIComponent(`Halo CloudPrime, saya tertarik untuk membeli lisensi ${PRODUCT_NAME} seharga Rp 99rb. Bagaimana langkah selanjutnya?`);
+        // Checkout Handler
+        function handleCheckout() {
+            alert("Sistem Checkout sedang dalam pemeliharaan. Silakan hubungi admin melalui menu Konsultasi untuk bantuan manual.");
+        }
+
+        // Consultation Handler
+        function handleConsultation() {
+            const message = encodeURIComponent(`Halo CloudPrime, saya ingin konsultasi mengenai lisensi ${PRODUCT_NAME}.`);
             window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+        }
+
+        // Demo Handler
+        function handleTryDemo() {
+            window.open(DEMO_URL, '_blank');
         }
 
         // Scroll Handler

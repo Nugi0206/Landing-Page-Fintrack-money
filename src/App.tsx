@@ -38,10 +38,19 @@ export default function App() {
   // Update nomor WhatsApp di sini
   const WHATSAPP_NUMBER = "628993358221"; 
   const PRODUCT_NAME = "FinTrack Lifetime License";
+  const DEMO_URL = "https://appfintracker.netlify.app/";
 
-  const handleBuyNow = () => {
-    const message = encodeURIComponent(`Halo CloudPrime, saya tertarik untuk membeli lisensi ${PRODUCT_NAME} seharga Rp 99rb. Bagaimana langkah selanjutnya?`);
+  const handleCheckout = () => {
+    alert("Sistem Checkout sedang dalam pemeliharaan. Silakan hubungi admin melalui menu Konsultasi untuk bantuan manual.");
+  };
+
+  const handleConsultation = () => {
+    const message = encodeURIComponent(`Halo CloudPrime, saya ingin konsultasi mengenai lisensi ${PRODUCT_NAME}.`);
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+  };
+
+  const handleTryDemo = () => {
+    window.open(DEMO_URL, '_blank');
   };
 
   const scrollTo = (id: string) => {
@@ -69,9 +78,14 @@ export default function App() {
             <button onClick={() => scrollTo('how-it-works')} className="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Cara Kerja</button>
             <button onClick={() => scrollTo('pricing')} className="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Harga</button>
             <button onClick={() => scrollTo('faq')} className="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">FAQ</button>
-            <button onClick={handleBuyNow} className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.1em] transition-all shadow-lg shadow-blue-500/20 active:scale-95">
-              Dapatkan Lisensi
-            </button>
+            <div className="flex items-center gap-3">
+              <button onClick={handleTryDemo} className="text-white border border-white/10 hover:bg-white/5 px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.1em] transition-all">
+                Coba Demo
+              </button>
+              <button onClick={handleCheckout} className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.1em] transition-all shadow-lg shadow-blue-500/20 active:scale-95">
+                Checkout Sekarang
+              </button>
+            </div>
           </div>
 
           <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -86,8 +100,8 @@ export default function App() {
             <button onClick={() => scrollTo('how-it-works')} className="text-sm font-black uppercase text-left">Cara Kerja</button>
             <button onClick={() => scrollTo('pricing')} className="text-sm font-black uppercase text-left">Harga</button>
             <button onClick={() => scrollTo('faq')} className="text-sm font-black uppercase text-left">FAQ</button>
-            <button onClick={handleBuyNow} className="bg-blue-600 text-white py-4 rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-2">
-              <MessageCircle size={20} /> Hubungi Admin
+            <button onClick={handleConsultation} className="bg-blue-600 text-white py-4 rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-2">
+              <MessageCircle size={20} /> Konsultasi Admin
             </button>
           </div>
         )}
@@ -109,11 +123,11 @@ export default function App() {
             Berhenti bertanya-tanya ke mana perginya uang Anda. FinTrack membantu Anda mencatat setiap rupiah dengan presisi tinggi dan dashboard yang memanjakan mata.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-            <button onClick={() => scrollTo('pricing')} className="group w-full sm:w-auto bg-white text-black px-12 py-6 rounded-full font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-blue-50 transition-all shadow-[0_20px_40px_rgba(255,255,255,0.1)] active:scale-95">
-              Beli Lisensi <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            <button onClick={handleCheckout} className="group w-full sm:w-auto bg-white text-black px-12 py-6 rounded-full font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-blue-50 transition-all shadow-[0_20px_40px_rgba(255,255,255,0.1)] active:scale-95">
+              Checkout Sekarang <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </button>
-            <button onClick={() => scrollTo('features')} className="w-full sm:w-auto bg-[#1a1b23] border border-white/5 px-12 py-6 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-white/10 transition-all">
-              Pelajari Fitur
+            <button onClick={handleTryDemo} className="w-full sm:w-auto bg-[#1a1b23] border border-white/5 px-12 py-6 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+              <Smartphone size={18} /> Coba Akun Demo (3 Hari)
             </button>
           </div>
         </div>
@@ -219,15 +233,15 @@ export default function App() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <CheckCircle2 size={24} className="text-blue-500 shrink-0" />
+                <span className="font-bold text-gray-200">Filter Cerdas: Harian, Mingguan, Bulanan, Tahunan</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={24} className="text-blue-500 shrink-0" />
+                <span className="font-bold text-gray-200">Rekomendasi Budget Harian Otomatis dari Pendapatan</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 size={24} className="text-blue-500 shrink-0" />
                 <span className="font-bold text-gray-200">Manajemen Multi-Dompet Terintegrasi</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 size={24} className="text-blue-500 shrink-0" />
-                <span className="font-bold text-gray-200">Kategori Transaksi yang Bisa Dikustomisasi</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 size={24} className="text-blue-500 shrink-0" />
-                <span className="font-bold text-gray-200">History Lengkap dengan Catatan Detail</span>
               </li>
             </ul>
           </div>
@@ -244,14 +258,14 @@ export default function App() {
           
           <div className="grid md:grid-cols-3 gap-10">
             <FeatureCard 
-              icon={<BarChart3 className="text-blue-400" size={40} />}
-              title="Analitik Mendalam"
-              desc="Grafik pie dan bar otomatis yang memisahkan pengeluaran konsumtif dan produktif Anda."
+              icon={<Zap className="text-yellow-400" size={40} />}
+              title="Smart Recommendation"
+              desc="Sistem menghitung otomatis berapa maksimal pengeluaran harian Anda agar tetap hemat berdasarkan pendapatan."
             />
             <FeatureCard 
-              icon={<Download className="text-emerald-400" size={40} />}
-              title="Laporan Ekspor CSV"
-              desc="Ekspor semua data ke format Excel hanya dalam hitungan detik untuk audit mandiri."
+              icon={<BarChart3 className="text-blue-400" size={40} />}
+              title="Filter Multi-Dimensi"
+              desc="Lihat laporan keuangan secara Harian, Mingguan, Bulanan, hingga Tahunan hanya dengan satu klik."
             />
             <FeatureCard 
               icon={<Lock className="text-purple-400" size={40} />}
@@ -271,9 +285,9 @@ export default function App() {
           </div>
           
           <div className="grid md:grid-cols-3 gap-12 relative">
-            <StepItem number="01" title="Checkout WA" desc="Klik tombol beli dan konfirmasi pembayaran ke admin CloudPrime." />
-            <StepItem number="02" title="Kirim File" desc="Source code & panduan instalasi lengkap dikirimkan dalam 5 menit." />
-            <StepItem number="03" title="Live & Online" desc="Ikuti panduan setup sederhana dan aplikasi Anda online selamanya." />
+            <StepItem number="01" title="Checkout" desc="Pilih paket lisensi dan lakukan pembayaran melalui sistem checkout kami." />
+            <StepItem number="02" title="Konfirmasi" desc="Pembayaran Anda akan dikonfirmasi secara otomatis oleh sistem dalam hitungan detik." />
+            <StepItem number="03" title="Akses Dashboard" desc="Akun Anda aktif seketika. Mulai kelola finansial Anda langsung dari website." />
           </div>
         </div>
       </section>
@@ -292,23 +306,28 @@ export default function App() {
                 ⭐ Promo Terbatas Bulan Ini
               </div>
               <div className="flex flex-col items-center gap-2 mb-10">
-                <span className="text-gray-500 line-through font-bold">Rp 499.000</span>
+                <span className="text-gray-500 line-through font-bold">Rp 99.000</span>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-7xl font-black italic tracking-tighter text-white">Rp 99rb</span>
+                  <span className="text-7xl font-black italic tracking-tighter text-white">Rp 35.000</span>
                 </div>
                 <p className="text-gray-500 text-sm font-medium mt-2">Lisensi Seumur Hidup (Lifetime)</p>
               </div>
               
               <div className="space-y-5 mb-12 text-left max-w-xs mx-auto">
-                <PriceItem text="Full Source Code (React JS)" />
-                <PriceItem text="Panduan Deployment Vercel" />
-                <PriceItem text="Konfigurasi Firebase Database" />
-                <PriceItem text="Support Tanya Jawab CloudPrime" />
+                <PriceItem text="Akses Dashboard Full Fitur" />
+                <PriceItem text="Fitur Smart Recommendation Budget" />
+                <PriceItem text="Filter Harian/Mingguan/Bulanan/Tahunan" />
+                <PriceItem text="Support Konsultasi CloudPrime" />
               </div>
 
-              <button onClick={handleBuyNow} className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-[0.2em] py-7 rounded-[2.5rem] shadow-[0_15px_40px_rgba(37,99,235,0.4)] transition-all active:scale-95 flex items-center justify-center gap-3 text-sm">
-                <MessageCircle size={22} /> Amankan Lisensi Saya
-              </button>
+              <div className="flex flex-col gap-4">
+                <button onClick={handleCheckout} className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-[0.2em] py-7 rounded-[2.5rem] shadow-[0_15px_40px_rgba(37,99,235,0.4)] transition-all active:scale-95 flex items-center justify-center gap-3 text-sm">
+                  <CreditCard size={22} /> Checkout Sekarang
+                </button>
+                <button onClick={handleConsultation} className="w-full bg-white/5 hover:bg-white/10 text-white border border-white/10 font-black uppercase tracking-[0.2em] py-5 rounded-[2.5rem] transition-all active:scale-95 flex items-center justify-center gap-3 text-xs">
+                  <MessageCircle size={18} /> Konsultasi via WhatsApp
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -324,12 +343,20 @@ export default function App() {
           
           <div className="space-y-4">
             <FAQItem 
+              q="Apakah ada akun demo untuk mencoba?" 
+              a="Tentu! Anda bisa mencoba fitur lengkap FinTrack melalui link demo kami di appfintracker.netlify.app. Akun demo tersedia selama 3 hari agar Anda bisa merasakan langsung kemudahan mengelola keuangan." 
+            />
+            <FAQItem 
+              q="Bagaimana fitur Rekomendasi Harian bekerja?" 
+              a="Sistem akan meminta input pendapatan bulanan Anda, lalu secara otomatis menghitung batas maksimal pengeluaran harian Anda agar tabungan tetap terjaga. Ini membantu Anda disiplin setiap hari." 
+            />
+            <FAQItem 
               q="Apakah saya perlu bayar bulanan?" 
-              a="Tidak. Ini adalah model sekali bayar. Setelah Anda memiliki source codenya, Anda bisa menggunakannya selamanya tanpa biaya tambahan atau langganan apapun." 
+              a="Tidak. Ini adalah model sekali bayar. Setelah Anda memiliki lisensinya, Anda bisa menggunakannya selamanya tanpa biaya tambahan atau langganan apapun." 
             />
             <FAQItem 
               q="Bagaimana jika saya gaptek atau tidak mengerti koding?" 
-              a="Jangan khawatir. Paket penjualan sudah termasuk panduan PDF dan video singkat yang menjelaskan cara online-kan aplikasi hanya dengan beberapa klik. Admin CloudPrime juga siap membantu jika Anda bingung." 
+              a="Jangan khawatir. FinTrack didesain dengan antarmuka yang sangat intuitif. Anda tidak perlu melakukan instalasi rumit karena ini adalah aplikasi berbasis web. Cukup login dan Anda siap mengelola keuangan. Admin CloudPrime juga siap membantu jika Anda memiliki pertanyaan." 
             />
             <FAQItem 
               q="Apakah aman untuk data keuangan saya?" 
@@ -337,7 +364,7 @@ export default function App() {
             />
             <FAQItem 
               q="Bisakah saya mengedit logo atau tampilannya?" 
-              a="Tentu saja! Karena Anda mendapatkan full source code (React JS), Anda bebas memodifikasi warna, logo, atau fitur sesuai keinginan Anda atau brand Anda." 
+              a="Tentu saja! Anda dapat menyesuaikan profil, kategori pengeluaran, dan target budget Anda sendiri melalui menu pengaturan di dalam dashboard." 
             />
           </div>
         </div>
