@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack - Uang Anda Punya Cerita</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0e14;
+            color: white;
+            scroll-behavior: smooth;
+        }
+        
+        .bg-gradient-text {
+            background: linear-gradient(to right, #60a5fa, #818cf8, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+
+        .mobile-menu-hidden {
+            display: none;
+        }
+
+        .faq-answer-hidden {
+            display: none;
+        }
+
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+
+        /* Custom selection color */
+        ::selection {
+            background: rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="selection:bg-blue-500/30">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-[#0d0e14]/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="scrollToId('hero')">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+                    <i data-lucide="wallet" class="text-white" size="24"></i>
+                </div>
+                <span class="text-xl font-black tracking-tighter uppercase">FinTrack<span class="text-blue-500">.</span></span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8">
+                <button onclick="scrollToId('features')" class="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Fitur</button>
+                <button onclick="scrollToId('how-it-works')" class="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Cara Kerja</button>
+                <button onclick="scrollToId('pricing')" class="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Harga</button>
+                <button onclick="scrollToId('faq')" class="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-white transition-colors">FAQ</button>
+                <button onclick="handleBuyNow()" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.1em] transition-all shadow-lg shadow-blue-500/20 active:scale-95">
+                    Dapatkan Lisensi
+                </button>
+            </div>
+
+            <button class="md:hidden text-white" onclick="toggleMenu()">
+                <i data-lucide="menu" id="menu-icon" size="28"></i>
+                <i data-lucide="x" id="close-icon" class="hidden" size="28"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-menu" class="mobile-menu-hidden md:hidden absolute top-20 left-0 w-full bg-[#16171d] border-b border-white/10 p-6 flex flex-col gap-6">
+            <button onclick="scrollToId('features')" class="text-sm font-black uppercase text-left">Fitur</button>
+            <button onclick="scrollToId('how-it-works')" class="text-sm font-black uppercase text-left">Cara Kerja</button>
+            <button onclick="scrollToId('pricing')" class="text-sm font-black uppercase text-left">Harga</button>
+            <button onclick="scrollToId('faq')" class="text-sm font-black uppercase text-left">FAQ</button>
+            <button onclick="handleBuyNow()" class="bg-blue-600 text-white py-4 rounded-2xl font-black uppercase tracking-widest flex items-center justify-center gap-2">
+                <i data-lucide="message-circle" size="20"></i> Hubungi Admin
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-44 pb-24 px-6 overflow-hidden">
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[150px] pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full mb-8 animate-pulse-slow">
+                <i data-lucide="star" size="14" class="text-yellow-400 fill-yellow-400"></i>
+                <span class="text-[10px] font-black uppercase tracking-widest text-blue-400">By CloudPrime Digital Product</span>
+            </div>
+            <h1 class="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
+                Uang Anda <br /> 
+                <span class="bg-gradient-text italic tracking-[-0.05em]">Punya Cerita.</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
+                Berhenti bertanya-tanya ke mana perginya uang Anda. FinTrack membantu Anda mencatat setiap rupiah dengan presisi tinggi dan dashboard yang memanjakan mata.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+                <button onclick="scrollToId('pricing')" class="group w-full sm:w-auto bg-white text-black px-12 py-6 rounded-full font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-blue-50 transition-all shadow-[0_20px_40px_rgba(255,255,255,0.1)] active:scale-95">
+                    Beli Lisensi <i data-lucide="arrow-right" size="20" class="group-hover:translate-x-1 transition-transform"></i>
+                </button>
+                <button onclick="scrollToId('features')" class="w-full sm:w-auto bg-[#1a1b23] border border-white/5 px-12 py-6 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-white/10 transition-all">
+                    Pelajari Fitur
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats/Showcase Section -->
+    <section class="py-24 px-6 bg-[#0a0b10]/50">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative group">
+                <div class="absolute inset-0 bg-blue-600/20 blur-[120px] -z-10 group-hover:bg-blue-600/30 transition-all duration-700"></div>
+                
+                <!-- Real App Interface Simulation -->
+                <div class="relative bg-[#0d0e14] border-[8px] border-[#1a1b23] rounded-[3.5rem] shadow-2xl overflow-hidden max-w-[380px] mx-auto transition-transform duration-500 hover:scale-[1.02]">
+                    <!-- Status Bar -->
+                    <div class="h-10 px-8 flex items-center justify-between text-[11px] font-bold text-gray-500">
+                        <span>15.12</span>
+                        <div class="flex items-center gap-1.5"><i data-lucide="refresh-cw" size="10"></i><div class="w-4 h-2 bg-gray-600 rounded-sm"></div></div>
+                    </div>
+
+                    <!-- Header -->
+                    <div class="px-6 py-4 flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-[10px] font-bold uppercase tracking-wider">Selamat Datang,</p>
+                            <p class="text-xl font-black">CloudPrime</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="bg-white/5 p-2 rounded-xl"><i data-lucide="refresh-cw" size="18" class="text-gray-400"></i></div>
+                            <i data-lucide="moon" size="22" class="text-yellow-400 fill-yellow-400"></i>
+                        </div>
+                    </div>
+
+                    <!-- Main Spending Card -->
+                    <div class="px-6 mb-6">
+                        <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[2.5rem] p-7 shadow-xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+                            <div class="relative z-10">
+                                <p class="text-[9px] font-black uppercase tracking-[0.2em] text-white/80 mb-2">Total Pengeluaran Bulan Ini</p>
+                                <h3 class="text-3xl font-black mb-6">Rp 9.003.932</h3>
+                                <div class="flex items-center gap-2 text-[9px] font-bold bg-black/20 backdrop-blur-sm px-3 py-2 rounded-xl w-fit border border-white/10">
+                                    <i data-lucide="check-circle-2" size="12" class="text-green-400"></i>
+                                    <span>Terakhir sinkron: 25 Mar • 16.06</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Stats -->
+                    <div class="px-6 grid grid-cols-2 gap-4 mb-8">
+                        <div class="bg-[#12b3bc1a] border border-[#12b3bc33] p-5 rounded-[2.2rem]">
+                           <p class="text-[8px] font-black uppercase text-[#12b3bc] tracking-widest mb-1">Hari Ini</p>
+                           <p class="text-lg font-black italic">Rp 106.500</p>
+                        </div>
+                        <div class="bg-[#12bc771a] border border-[#12bc7733] p-5 rounded-[2.2rem]">
+                           <p class="text-[8px] font-black uppercase text-[#12bc77] tracking-widest mb-1">7 Hari Terakhir</p>
+                           <p class="text-lg font-black italic">Rp 2.226.240</p>
+                        </div>
+                    </div>
+
+                    <!-- Transactions List -->
+                    <div class="px-6 pb-20">
+                        <div class="flex justify-between items-center mb-4">
+                            <p class="text-[9px] font-black uppercase text-gray-500 tracking-[0.2em]">25 Mar 2026</p>
+                            <span class="text-[9px] font-black bg-pink-500/10 text-pink-500 px-2 py-0.5 rounded">-Rp 106.500</span>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="bg-[#16171d] p-5 rounded-[1.8rem] flex justify-between items-center border border-white/5">
+                                <div class="flex items-center gap-4">
+                                   <div class="w-10 h-10 bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-400 shadow-inner">
+                                    <i data-lucide="arrow-up-right" size="18" class="rotate-180"></i>
+                                   </div>
+                                   <div>
+                                    <p class="text-[10px] font-black uppercase tracking-tight">Alfamart Regular D</p>
+                                    <p class="text-[8px] font-bold text-gray-600">BCA</p>
+                                   </div>
+                                </div>
+                                <p class="text-xs font-black text-pink-500">-Rp 94.500</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Bar Navigation -->
+                    <div class="absolute bottom-0 left-0 w-full px-6 py-6 bg-[#0d0e14]/90 backdrop-blur-md border-t border-white/5">
+                        <div class="flex items-center justify-between relative px-2 text-gray-600">
+                            <div class="flex flex-col items-center gap-1 text-blue-500"><i data-lucide="home" size="20"></i><span class="text-[7px] font-black uppercase">Home</span></div>
+                            <div class="flex flex-col items-center gap-1"><i data-lucide="bar-chart-3" size="20"></i><span class="text-[7px] font-black uppercase">Stats</span></div>
+                            <div class="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center -mt-12 border-[6px] border-[#0d0e14] text-white shadow-xl shadow-blue-600/30">
+                                <i data-lucide="plus" size="28"></i>
+                            </div>
+                            <div class="flex flex-col items-center gap-1"><i data-lucide="wallet" size="20"></i><span class="text-[7px] font-black uppercase">Wallet</span></div>
+                            <div class="flex flex-col items-center gap-1"><i data-lucide="user" size="20"></i><span class="text-[7px] font-black uppercase">Me</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <div class="w-12 h-1 w-20 bg-blue-600 rounded-full"></div>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter leading-tight">Dashboard yang Berbicara untuk Anda.</h2>
+                <p class="text-gray-400 leading-relaxed text-lg">
+                    Kami tidak hanya membuat pencatat keuangan. Kami membuat asisten visual. Anda bisa melihat pergerakan saldo dari berbagai dompet (BCA, Seabank, E-Wallet) dalam satu layar tanpa perlu login ke banyak aplikasi bank.
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" size="24" class="text-blue-500 shrink-0"></i>
+                        <span class="font-bold text-gray-200">Manajemen Multi-Dompet Terintegrasi</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" size="24" class="text-blue-500 shrink-0"></i>
+                        <span class="font-bold text-gray-200">Kategori Transaksi yang Bisa Dikustomisasi</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle-2" size="24" class="text-blue-500 shrink-0"></i>
+                        <span class="font-bold text-gray-200">History Lengkap dengan Catatan Detail</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Detail -->
+    <section id="features" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-blue-500 mb-6">Solusi Pintar</h2>
+                <p class="text-4xl md:text-6xl font-black tracking-tight">Kendalikan Aliran Kas Anda.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="bg-[#1a1b23] p-12 rounded-[3.5rem] border border-white/5 hover:border-blue-500/30 transition-all duration-500 group">
+                    <div class="mb-8 p-4 bg-white/5 rounded-[1.5rem] inline-block group-hover:scale-110 group-hover:bg-blue-600/10 transition-all">
+                        <i data-lucide="bar-chart-3" class="text-blue-400" size="40"></i>
+                    </div>
+                    <h3 class="text-2xl font-black mb-5 tracking-tight">Analitik Mendalam</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed font-medium">Grafik pie dan bar otomatis yang memisahkan pengeluaran konsumtif dan produktif Anda.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-[#1a1b23] p-12 rounded-[3.5rem] border border-white/5 hover:border-blue-500/30 transition-all duration-500 group">
+                    <div class="mb-8 p-4 bg-white/5 rounded-[1.5rem] inline-block group-hover:scale-110 group-hover:bg-blue-600/10 transition-all">
+                        <i data-lucide="download" class="text-emerald-400" size="40"></i>
+                    </div>
+                    <h3 class="text-2xl font-black mb-5 tracking-tight">Laporan Ekspor CSV</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed font-medium">Ekspor semua data ke format Excel hanya dalam hitungan detik untuk audit mandiri.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-[#1a1b23] p-12 rounded-[3.5rem] border border-white/5 hover:border-blue-500/30 transition-all duration-500 group">
+                    <div class="mb-8 p-4 bg-white/5 rounded-[1.5rem] inline-block group-hover:scale-110 group-hover:bg-blue-600/10 transition-all">
+                        <i data-lucide="lock" class="text-purple-400" size="40"></i>
+                    </div>
+                    <h3 class="text-2xl font-black mb-5 tracking-tight">Privasi Mutlak</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed font-medium">Data Anda disimpan di Firebase Google dengan enkripsi tingkat tinggi. Hanya Anda yang punya kunci aksesnya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-24 px-6 bg-[#16171d]/30 border-y border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-blue-500 mb-6">Alur Pembelian</h2>
+                <p class="text-3xl md:text-5xl font-black tracking-tight">Cepat & Transparan.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-12 relative">
+                <div class="relative z-10 text-center space-y-4">
+                    <div class="w-16 h-16 bg-blue-600 rounded-2xl mx-auto flex items-center justify-center text-xl font-black shadow-2xl shadow-blue-500/40">01</div>
+                    <h4 class="text-xl font-black tracking-tight">Checkout WA</h4>
+                    <p class="text-gray-500 text-xs font-medium leading-relaxed">Klik tombol beli dan konfirmasi pembayaran ke admin CloudPrime.</p>
+                </div>
+                <div class="relative z-10 text-center space-y-4">
+                    <div class="w-16 h-16 bg-blue-600 rounded-2xl mx-auto flex items-center justify-center text-xl font-black shadow-2xl shadow-blue-500/40">02</div>
+                    <h4 class="text-xl font-black tracking-tight">Kirim File</h4>
+                    <p class="text-gray-500 text-xs font-medium leading-relaxed">Source code & panduan instalasi lengkap dikirimkan dalam 5 menit.</p>
+                </div>
+                <div class="relative z-10 text-center space-y-4">
+                    <div class="w-16 h-16 bg-blue-600 rounded-2xl mx-auto flex items-center justify-center text-xl font-black shadow-2xl shadow-blue-500/40">03</div>
+                    <h4 class="text-xl font-black tracking-tight">Live & Online</h4>
+                    <p class="text-gray-500 text-xs font-medium leading-relaxed">Ikuti panduan setup sederhana dan aplikasi Anda online selamanya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-32 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-blue-500 mb-6">Investasi Terbaik</h2>
+                <p class="text-4xl md:text-6xl font-black tracking-tight">Harga Satu Kali, Manfaat Abadi.</p>
+            </div>
+
+            <div class="max-w-xl mx-auto bg-gradient-to-br from-[#1a1b23] to-[#0d0e14] border border-white/10 rounded-[4rem] p-12 relative shadow-[0_50px_100px_rgba(0,0,0,0.5)] overflow-hidden group">
+                <div class="relative z-10 text-center">
+                    <div class="bg-blue-600/20 text-blue-400 text-[10px] font-black uppercase tracking-widest px-6 py-2 rounded-full inline-block mb-8 border border-blue-600/30">
+                        ⭐ Promo Terbatas Bulan Ini
+                    </div>
+                    <div class="flex flex-col items-center gap-2 mb-10">
+                        <span class="text-gray-500 line-through font-bold">Rp 499.000</span>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-7xl font-black italic tracking-tighter text-white">Rp 99rb</span>
+                        </div>
+                        <p class="text-gray-500 text-sm font-medium mt-2">Lisensi Seumur Hidup (Lifetime)</p>
+                    </div>
+                    
+                    <div class="space-y-5 mb-12 text-left max-w-xs mx-auto">
+                        <div class="flex items-center gap-4">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                                <i data-lucide="check-circle-2" size="14" class="text-emerald-500"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-300 tracking-wide uppercase">Full Source Code (React JS)</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                                <i data-lucide="check-circle-2" size="14" class="text-emerald-500"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-300 tracking-wide uppercase">Panduan Deployment Vercel</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                                <i data-lucide="check-circle-2" size="14" class="text-emerald-500"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-300 tracking-wide uppercase">Konfigurasi Firebase Database</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                                <i data-lucide="check-circle-2" size="14" class="text-emerald-500"></i>
+                            </div>
+                            <span class="text-xs font-bold text-gray-300 tracking-wide uppercase">Support Tanya Jawab CloudPrime</span>
+                        </div>
+                    </div>
+
+                    <button onclick="handleBuyNow()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-[0.2em] py-7 rounded-[2.5rem] shadow-[0_15px_40px_rgba(37,99,235,0.4)] transition-all active:scale-95 flex items-center justify-center gap-3 text-sm">
+                        <i data-lucide="message-circle" size="22"></i> Amankan Lisensi Saya
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 px-6 bg-[#0a0b10]">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-[10px] font-black uppercase tracking-[0.4em] text-blue-500 mb-6">Pusat Bantuan</h2>
+                <p class="text-3xl md:text-5xl font-black tracking-tight italic">Sering Ditanyakan.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="bg-[#1a1b23] border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFAQ(this)" class="w-full p-8 flex items-center justify-between text-left hover:bg-white/5 transition-colors">
+                        <span class="text-lg font-black tracking-tight pr-8">Apakah saya perlu bayar bulanan?</span>
+                        <i data-lucide="chevron-down" size="20" class="text-blue-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer-hidden px-8 pb-8">
+                        <p class="text-gray-500 text-sm leading-relaxed font-medium border-t border-white/5 pt-6">Tidak. Ini adalah model sekali bayar. Setelah Anda memiliki source codenya, Anda bisa menggunakannya selamanya tanpa biaya tambahan atau langganan apapun.</p>
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="bg-[#1a1b23] border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFAQ(this)" class="w-full p-8 flex items-center justify-between text-left hover:bg-white/5 transition-colors">
+                        <span class="text-lg font-black tracking-tight pr-8">Bagaimana jika saya gaptek atau tidak mengerti koding?</span>
+                        <i data-lucide="chevron-down" size="20" class="text-blue-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer-hidden px-8 pb-8">
+                        <p class="text-gray-500 text-sm leading-relaxed font-medium border-t border-white/5 pt-6">Jangan khawatir. Paket penjualan sudah termasuk panduan PDF dan video singkat yang menjelaskan cara online-kan aplikasi hanya dengan beberapa klik. Admin CloudPrime juga siap membantu jika Anda bingung.</p>
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="bg-[#1a1b23] border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFAQ(this)" class="w-full p-8 flex items-center justify-between text-left hover:bg-white/5 transition-colors">
+                        <span class="text-lg font-black tracking-tight pr-8">Apakah aman untuk data keuangan saya?</span>
+                        <i data-lucide="chevron-down" size="20" class="text-blue-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer-hidden px-8 pb-8">
+                        <p class="text-gray-500 text-sm leading-relaxed font-medium border-t border-white/5 pt-6">Sangat aman. Data tidak disimpan di server kami, melainkan di server Google Firebase milik Anda sendiri. Hanya Anda yang memiliki akses ke database tersebut.</p>
+                    </div>
+                </div>
+                <!-- FAQ 4 -->
+                <div class="bg-[#1a1b23] border border-white/5 rounded-[2rem] overflow-hidden transition-all duration-300">
+                    <button onclick="toggleFAQ(this)" class="w-full p-8 flex items-center justify-between text-left hover:bg-white/5 transition-colors">
+                        <span class="text-lg font-black tracking-tight pr-8">Bisakah saya mengedit logo atau tampilannya?</span>
+                        <i data-lucide="chevron-down" size="20" class="text-blue-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer-hidden px-8 pb-8">
+                        <p class="text-gray-500 text-sm leading-relaxed font-medium border-t border-white/5 pt-6">Tentu saja! Karena Anda mendapatkan full source code (React JS), Anda bebas memodifikasi warna, logo, atau fitur sesuai keinginan Anda atau brand Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-24 px-6 border-t border-white/5 bg-[#0a0b10]">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center text-center md:text-left">
+            <div>
+                <div class="flex items-center justify-center md:justify-start gap-2 mb-6">
+                    <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+                        <i data-lucide="wallet" size="24" class="text-white"></i>
+                    </div>
+                    <span class="text-2xl font-black tracking-tighter uppercase">FinTrack<span class="text-blue-500">.</span></span>
+                </div>
+                <p class="text-gray-500 text-sm max-w-sm mx-auto md:mx-0">Solusi modern untuk mengelola finansial pribadi dengan gaya dan keamanan tingkat tinggi.</p>
+            </div>
+            <div class="flex flex-col items-center md:items-end gap-6">
+                <p class="text-gray-600 text-[10px] font-black uppercase tracking-widest">© 2026 CloudPrime Digital Product • Crafted with Precision</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Constants
+        const WHATSAPP_NUMBER = "628993358221";
+        const PRODUCT_NAME = "FinTrack Lifetime License";
+
+        // WhatsApp Handler
+        function handleBuyNow() {
+            const message = encodeURIComponent(`Halo CloudPrime, saya tertarik untuk membeli lisensi ${PRODUCT_NAME} seharga Rp 99rb. Bagaimana langkah selanjutnya?`);
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+        }
+
+        // Scroll Handler
+        function scrollToId(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                mobileMenu.classList.add('mobile-menu-hidden');
+                document.getElementById('menu-icon').classList.remove('hidden');
+                document.getElementById('close-icon').classList.add('hidden');
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            if (mobileMenu.classList.contains('mobile-menu-hidden')) {
+                mobileMenu.classList.remove('mobile-menu-hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('mobile-menu-hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        }
+
+        // FAQ Toggle
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('[data-lucide="chevron-down"]');
+            
+            if (answer.classList.contains('faq-answer-hidden')) {
+                answer.classList.remove('faq-answer-hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                answer.classList.add('faq-answer-hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
+</body>
+</html>
